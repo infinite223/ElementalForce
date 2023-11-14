@@ -1,10 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { colors } from './src/Utils/colors';
+import { colors } from './src/utils/colors';
+import { useState } from 'react'
+import Game from './src/screens/GameScreen';
 
 export default function App() {
+  const [showGame, setShowGame] = useState(false);
   return (
     <View style={styles.container}>
+      {showGame&& 
+        <Game/>
+      }
+      
       <Text style={styles.appName}>
         Elemental
         <Text style={{color: colors.provideColor}}>
@@ -12,7 +19,10 @@ export default function App() {
         </Text>
       </Text>
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity 
+        style={styles.button}
+        onPress={() => setShowGame(true)}
+      >
         <Text style={styles.buttonText}>
           Wejdź do gry
         </Text>
