@@ -3,33 +3,36 @@ import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { colors } from './src/utils/colors';
 import { useState } from 'react'
 import Game from './src/screens/GameScreen';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 export default function App() {
   const [showGame, setShowGame] = useState(false);
   return (
-    <View style={styles.container}>
-      {showGame&& 
-        <Game/>
-      }
-      
-      <Text style={styles.appName}>
-        Elemental
-        <Text style={{color: colors.provideColor}}>
-          Force
+    <GestureHandlerRootView style={{flex: 1}}>
+      <View style={styles.container}>
+        {showGame&& 
+          <Game/>
+        }
+        
+        <Text style={styles.appName}>
+          Elemental
+          <Text style={{color: colors.provideColor}}>
+            Force
+          </Text>
         </Text>
-      </Text>
 
-      <TouchableOpacity 
-        style={styles.button}
-        onPress={() => setShowGame(true)}
-      >
-        <Text style={styles.buttonText}>
-          Wejdź do gry
-        </Text>
-      </TouchableOpacity> 
+        <TouchableOpacity 
+          style={styles.button}
+          onPress={() => setShowGame(true)}
+        >
+          <Text style={styles.buttonText}>
+            Wejdź do gry
+          </Text>
+        </TouchableOpacity> 
 
-      <StatusBar style="auto" />
-    </View>
+        <StatusBar style="auto" />
+      </View>
+    </GestureHandlerRootView>
   );
 }
 

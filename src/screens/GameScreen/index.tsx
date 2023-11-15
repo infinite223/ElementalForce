@@ -1,15 +1,22 @@
 import { View, Text, StyleSheet } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { heightScreen, widthScreen } from '../../utils/constants'
 import SkillCard from './Cards/SkillCard'
 import ChampCard from './Cards/ChampCard'
+import DragDrop from '../../components/DragDrop'
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { basicCards } from '../../utils/data' 
+import OwnBoardCards from './OwnBoardCards'
 
 const Game = () => {
+  const [cards, setCards] = useState(basicCards)
+
   return (
-    <View style={styles.gameContainer}>
-      <SkillCard/>
-      <ChampCard/>
-    </View>
+      <View style={styles.gameContainer}>
+        <ChampCard/>
+
+        <OwnBoardCards cards={cards}/>
+      </View>
   )
 }
 
