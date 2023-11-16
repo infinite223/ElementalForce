@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         width: widthScreen,
         height: heightScreen,
 
-        backgroundColor: 'white',
+        backgroundColor: 'black',
         zIndex: 3,
 
         alignItems: 'center',

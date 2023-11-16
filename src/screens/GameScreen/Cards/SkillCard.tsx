@@ -7,7 +7,7 @@ const SkillCard: FC<{card: Card}> = ({ card: { desc, elementalParams, name, type
   const detectElemental = elementalParams.wind > elementalParams.water?0:1
 
   return (
-    <GradientProvider elemental={detectElemental}>
+    <GradientProvider elemental={detectElemental} style={{borderRadius: 2}}>
       <View style={styles.cardContainer}>
         <Text style={styles.nameCard}>
           {name}
@@ -21,18 +21,20 @@ export default SkillCard
 
 const styles = StyleSheet.create({
     cardContainer: {
-        borderRadius: 5,
-        width: 90,
-        height: 130,
+        borderRadius: 2,
+        width: 75,
+        height: 120,
         zIndex: 3,
         alignItems:'flex-start',
-        paddingHorizontal: 10,
-        paddingVertical: 5
+        justifyContent:'flex-end',
+        paddingHorizontal: 2,
+        paddingVertical: 2,
+        borderWidth: 1,
+        borderColor: 'rgba(11, 11, 9, .1)',
     },
     nameCard: {
       fontSize: 8,
       color: 'white',
       fontWeight: '700',
-
     }
 })

@@ -1,13 +1,18 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
-import {LinearGradient} from 'expo-linear-gradient';
+import GradientProvider from '../../../components/GradientProvider'
+import { heightScreen, widthScreen } from '../../../utils/constants'
 
 const ChampCard = () => {
   return (
     <View style={styles.cardContainer}>
-      <Text>
+        <GradientProvider elemental={1} style={{flex: 1, opacity: .7}}>
+          <View>
+            <Text>
 
-      </Text>
+            </Text>
+          </View>
+        </GradientProvider>
     </View>
   )
 }
@@ -16,9 +21,11 @@ export default ChampCard
 
 const styles = StyleSheet.create({
     cardContainer: {
-        backgroundColor: 'rgba(92, 129, 22, .8)',
+        position: 'absolute',
+        bottom: 0,
         borderRadius: 5,
-        width: 160,
-        height: 130
+        width: widthScreen,
+        height: heightScreen / 1.7,
+
     }
 })

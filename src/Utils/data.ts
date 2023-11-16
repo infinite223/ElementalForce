@@ -34,5 +34,61 @@ export const basicCards: Card[] = [
             wind: 40,
             darkus: 10
         }
-    }
+    },
+    {
+        name: 'Water Ball',
+        desc: "Postać wytwarza pocisk wodny",
+        type: 'block',
+        elementalParams: {
+            water: 95,
+            fire: 0,
+            wind: 40,
+            darkus: 10
+        }
+    },
+    {
+        name: 'Water Ball',
+        desc: "Postać wytwarza pocisk wodny",
+        type: 'block',
+        elementalParams: {
+            water: 95,
+            fire: 0,
+            wind: 40,
+            darkus: 10
+        }
+    },
+    {
+        name: 'Water Ball',
+        desc: "Postać wytwarza pocisk wodny",
+        type: 'block',
+        elementalParams: {
+            water: 95,
+            fire: 0,
+            wind: 40,
+            darkus: 10
+        }
+    },
+    {
+        name: 'Magic wall',
+        desc: "Postać tworzy barierę",
+        type: 'block',
+        elementalParams: {
+            water: 35,
+            fire: 55,
+            wind: 90,
+            darkus: 12
+        }
+    },
+    {
+        name: 'Water Ball',
+        desc: "Postać wytwarza pocisk wodny",
+        type: 'block',
+        elementalParams: {
+            water: 95,
+            fire: 0,
+            wind: 40,
+            darkus: 10
+        }
+    },
+    
 ]

@@ -20,8 +20,9 @@ const OwnBoardCards: FC<OwnBoardCards> = ({ cards }) => {
       
   return (
     <View style={styles.OwnBoardCardsContainer}>
-        {cards.map((card) => 
+        {cards.map((card, i) => 
             <DragDrop
+                key={i}
                 onDrag={drag}
                 onDrop={drop}
             >
@@ -46,11 +47,10 @@ const styles = StyleSheet.create({
 
         zIndex: 1,
 
-
         flexDirection: 'row',
         alignItems: 'center',
-        gap: 10,
-        paddingHorizontal: 10,
-        paddingVertical: 10
+        gap: -45,
+        paddingHorizontal: 5,
+        paddingVertical: 5,
     } 
 })

@@ -1,19 +1,26 @@
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet, StyleProp } from 'react-native'
 import React, { FC } from 'react'
 import { LinearGradient } from 'expo-linear-gradient'
+
 interface GradientProviderProps {
     children: JSX.Element | JSX.Element [],
-    elemental: number
+    elemental: number,
+    style?: any
 }
 
 const gradients = [
     ['#4c669f', '#3b5998', '#192f6a'],
-    ['#4b9f28', '#1b9928', '#1b7928']
+    ['#8bdf28', '#1b9928', '#5ba928']
 ]
 
-const GradientProvider:FC<GradientProviderProps> = ({ children, elemental }) => {
+const GradientProvider:FC<GradientProviderProps> = ({ children, elemental, style }) => {
   return (
-    <LinearGradient colors={gradients[elemental]} style={{}}>
+    <LinearGradient 
+        start={[1, 0]}
+        end={[.2, .7]}
+        colors={gradients[elemental]} 
+        style={[style]}
+    >
         {children}
     </LinearGradient>  )
 }
