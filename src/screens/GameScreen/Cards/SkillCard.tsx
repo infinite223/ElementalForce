@@ -2,13 +2,34 @@ import { View, Text, StyleSheet } from 'react-native'
 import React, { FC } from 'react'
 import { Card } from '../../../utils/data'
 import GradientProvider from '../../../components/GradientProvider'
+import ElementalsValues from '../../../components/ElementalsValues'
 
-const SkillCard: FC<{card: Card}> = ({ card: { desc, elementalParams, name, type} }) => {
-  const detectElemental = elementalParams.wind > elementalParams.water?0:1
+const SkillCard: FC<{card: Card}> = ({ card: { desc, elementalParams, name} }) => {
+    const findMaxPowerElemental = () => {
+      let findingMax = elementalParams[0];
 
+      for (let i = 0; i < elementalParams.length; i++) {
+        if(elementalParams[i].power>=findingMax.power) {
+          findingMax = elementalParams[i]
+        }
+      }
+
+      return findingMax
+    }
+
+    const cardElemental = findMaxPowerElemental()
+    console.log(cardElemental)
   return (
-    <GradientProvider elemental={detectElemental} style={{borderRadius: 2}}>
+    <GradientProvider elemental={cardElemental} style={{borderRadius: 2}} cardType='skill'>
       <View style={styles.cardContainer}>
+
+        <ElementalsValues elementalsValues={elementalParams}/>
+
+        <View  style={styles.descCard}>
+          <Text style={styles.descCardText}>
+            {desc}
+          </Text>
+        </View>
         <Text style={styles.nameCard}>
           {name}
         </Text>
@@ -30,11 +51,22 @@ const styles = StyleSheet.create({
         paddingHorizontal: 2,
         paddingVertical: 2,
         borderWidth: 1,
-        borderColor: 'rgba(11, 11, 9, .1)',
+        borderColor: 'rgba(200, 200, 209, .2)',
+        gap: 2
     },
     nameCard: {
       fontSize: 8,
       color: 'white',
       fontWeight: '700',
+    },
+    descCard: {
+      backgroundColor: 'rgba(11, 11, 11, .2)',
+      borderRadius: 3,
+      paddingHorizontal: 3,
+      paddingVertical:1
+    },
+    descCardText: {
+      fontSize: 4,
+      color: 'white',
     }
 })

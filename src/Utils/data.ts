@@ -1,94 +1,120 @@
-type spellCardsType = "block" | "atack"
-type elementals = "darkus" | "water" | "fire" | "wind"
+export type spellCardsType = "block" | "atack"
+export type elementals = "darkus" | "water" | "fire" | "wind"
+export type elementalParamsType = {
+    name: elementals,
+    power: number,
+    type: spellCardsType
+}
 
 export type Card = {
     name: string,
     desc: string,
-    type: spellCardsType,
-    elementalParams: {
-        water: number,
-        fire: number,
-        wind: number,
-        darkus: number
-    }
+    elementalParams: elementalParamsType[]
+    
 }
 export const basicCards: Card[] = [
     {
         name: 'Magic wall',
         desc: "Postać tworzy barierę",
-        type: 'block',
-        elementalParams: {
-            water: 35,
-            fire: 55,
-            wind: 90,
-            darkus: 12
-        }
+        elementalParams: [
+            {
+                name: 'water',
+                power: 32,
+                type: 'block'
+            },
+            {
+                name: 'wind',
+                power: 62,
+                type: 'block'
+            },
+            {
+                name: 'darkus',
+                power: 42,
+                type: 'block'
+            },
+            {
+                name: 'fire',
+                power: 22,
+                type: 'block'
+            },
+        ]
     },
     {
-        name: 'Water Ball',
-        desc: "Postać wytwarza pocisk wodny",
-        type: 'block',
-        elementalParams: {
-            water: 95,
-            fire: 0,
-            wind: 40,
-            darkus: 10
-        }
-    },
-    {
-        name: 'Water Ball',
-        desc: "Postać wytwarza pocisk wodny",
-        type: 'block',
-        elementalParams: {
-            water: 95,
-            fire: 0,
-            wind: 40,
-            darkus: 10
-        }
-    },
-    {
-        name: 'Water Ball',
-        desc: "Postać wytwarza pocisk wodny",
-        type: 'block',
-        elementalParams: {
-            water: 95,
-            fire: 0,
-            wind: 40,
-            darkus: 10
-        }
-    },
-    {
-        name: 'Water Ball',
-        desc: "Postać wytwarza pocisk wodny",
-        type: 'block',
-        elementalParams: {
-            water: 95,
-            fire: 0,
-            wind: 40,
-            darkus: 10
-        }
-    },
-    {
-        name: 'Magic wall',
+        name: 'Fire ball',
         desc: "Postać tworzy barierę",
-        type: 'block',
-        elementalParams: {
-            water: 35,
-            fire: 55,
-            wind: 90,
-            darkus: 12
-        }
+        elementalParams: [
+            {
+                name: 'water',
+                power: 12,
+                type: 'atack'
+            },
+            {
+                name: 'wind',
+                power: 22,
+                type: 'atack'
+            },
+            {
+                name: 'darkus',
+                power: 25,
+                type: 'atack'
+            },
+            {
+                name: 'fire',
+                power: 72,
+                type: 'atack'
+            },
+        ]
     },
     {
-        name: 'Water Ball',
-        desc: "Postać wytwarza pocisk wodny",
-        type: 'block',
-        elementalParams: {
-            water: 95,
-            fire: 0,
-            wind: 40,
-            darkus: 10
-        }
+        name: 'Shadow atack',
+        desc: "Postać tworzy barierę",
+        elementalParams: [
+            {
+                name: 'water',
+                power: 12,
+                type: 'atack'
+            },
+            {
+                name: 'wind',
+                power: 52,
+                type: 'atack'
+            },
+            {
+                name: 'darkus',
+                power: 95,
+                type: 'atack'
+            },
+            {
+                name: 'fire',
+                power: 12,
+                type: 'atack'
+            },
+        ]
     },
-    
+    {
+        name: 'Shadow atack',
+        desc: "Postać tworzy barierę",
+        elementalParams: [
+            {
+                name: 'water',
+                power: 12,
+                type: 'atack'
+            },
+            {
+                name: 'wind',
+                power: 52,
+                type: 'atack'
+            },
+            {
+                name: 'darkus',
+                power: 195,
+                type: 'atack'
+            },
+            {
+                name: 'fire',
+                power: 12,
+                type: 'atack'
+            },
+        ]
+    },
 ]

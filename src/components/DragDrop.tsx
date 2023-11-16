@@ -66,7 +66,6 @@ const DragDrop:FC<DragDropProps> = ({ children, onDrag, onDrop }) => {
 
                 if (event.absoluteY < 250) {
                     console.log('drop', event.absoluteY, event.translationY)
-                    scale.value = withSpring(2, { });
 
                     rotateX.value = withSpring('360deg')
                     // scale.value = withSpring(1, { });

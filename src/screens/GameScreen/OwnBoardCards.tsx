@@ -42,14 +42,15 @@ const styles = StyleSheet.create({
 
         width: widthScreen - 50,
         // height: 140,
-        backgroundColor: 'rgba(11, 34, 32, .2)',
+        // backgroundColor: 'rgba(11, 34, 32, .2)',
         borderRadius: 5,
 
         zIndex: 1,
 
         flexDirection: 'row',
         alignItems: 'center',
-        gap: -45,
+        justifyContent:'center',
+        gap: -35,
         paddingHorizontal: 5,
         paddingVertical: 5,
     } 
