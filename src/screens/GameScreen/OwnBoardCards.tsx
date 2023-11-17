@@ -4,6 +4,8 @@ import { widthScreen } from '../../utils/constants'
 import { Card } from '../../utils/data'
 import SkillCard from './Cards/SkillCard'
 import DragDrop from '../../components/DragDrop'
+import { databases } from '../../appWriteConfig'
+import { useSharedValue } from 'react-native-reanimated'
 
 interface OwnBoardCards {
     cards: Card[]
@@ -15,7 +17,16 @@ const OwnBoardCards: FC<OwnBoardCards> = ({ cards }) => {
       }
     
     const drop = (x: number, y: number) => {
-        // console.log('drop', x, y)
+        // const promise = databases.listDocuments(
+        //     '6557c6fc6b9c583de93c',
+        //     '6557c71d64e2181cbe11',
+        //  );
+          
+        // promise.then(function (response) {
+        //     console.log(response);
+        // }, function (error) {
+        //     console.log(error);
+        // });
     }
       
   return (
@@ -25,6 +36,7 @@ const OwnBoardCards: FC<OwnBoardCards> = ({ cards }) => {
                 key={i}
                 onDrag={drag}
                 onDrop={drop}
+                card={card}
             >
                 <SkillCard card={card}/>
             </DragDrop>

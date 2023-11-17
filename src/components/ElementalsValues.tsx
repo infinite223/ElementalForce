@@ -11,16 +11,28 @@ const ElementalsValues:FC<ElementalsValuesProps> = ({elementalsValues}) => {
   return (
       <FlatList
         scrollEnabled={false}
-        contentContainerStyle={{gap: 2, padding: 1}}
+        contentContainerStyle={{gap: 3, padding: 1}}
         data={elementalsValues}
         renderItem={({item}) => 
-          <GradientProvider cardType='elemental' elemental={item} style={{borderRadius: 50}}>
+        <View style={{flexDirection: 'row', alignItems: 'center', gap: 3}}>
+          <GradientProvider 
+            cardType='elemental' 
+            elemental={item} 
+            style={{
+              borderRadius: 50,
+              // borderColor: item.type ==='atack'?'rgba(250, 110, 110, 1)':'rgba(250, 250, 250, .9)'
+            }}
+          >
             <View style={styles.elementalValue}>
-              <Text style={styles.elementalValueText}>
+              <Text style={[styles.elementalValueText]}>
                 {item.power}
               </Text>
             </View>
           </GradientProvider>
+          <Text style={styles.typeCard}>
+            {item.type.at(0)?.toUpperCase()}
+          </Text>
+        </View>
         }
       />
   )
@@ -38,9 +50,13 @@ const styles = StyleSheet.create({
     justifyContent:'center'
   },
   elementalValueText: {
-    color: 'white',
+    color: 'rgba(255, 255, 255, .8)',
     fontSize: 4,
     alignSelf:'center',
     fontWeight: '600'
+  },
+  typeCard: {
+    fontSize: 4,
+    color: 'white'
   }
 })

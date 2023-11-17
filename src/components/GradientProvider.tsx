@@ -39,7 +39,7 @@ const GradientProvider:FC<GradientProviderProps> = ({ children, elemental, style
         start={[1, 0]}
         end={[.2, .7]}
         colors={findGradeint?findGradeint.gradients:backCard} 
-        style={[style, {opacity: cardType === 'champ'?.5:cardType==='elemental'?.8:1}]}
+        style={[style, {opacity: cardType === 'champ'?.5:cardType==='elemental'?1:1}]}
     >
         {children}
     </LinearGradient>  )

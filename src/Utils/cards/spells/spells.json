@@ -1,0 +1,80 @@
+[
+    {
+        "name": "Haos ciemności",
+        "desc": "",
+        "elementalParams": [
+            {
+                "name": "fire",
+                "power": 22,
+                "type": "block"
+            },
+            {
+                "name": "water",
+                "power": 32,
+                "type": "block"
+            },
+            {
+                "name": "wind",
+                "power": 32,
+                "type": "block"
+            },
+            {
+                "name": "darkus",
+                "power": 110,
+                "type": "atack"
+            }
+        ]
+    },
+    {
+        "name": "Ściana mroku",
+        "desc": "",
+        "elementalParams": [
+            {
+                "name": "fire",
+                "power": -30,
+                "type": "block"
+            },
+            {
+                "name": "water",
+                "power": -20,
+                "type": "block"
+            },
+            {
+                "name": "wind",
+                "power": 64,
+                "type": "block"
+            },
+            {
+                "name": "darkus",
+                "power": 80,
+                "type": "block"
+            }
+        ]
+    },
+    {
+        "name": "Mroczny aktak",
+        "desc": "",
+        "elementalParams": [
+            {
+                "name": "fire",
+                "power": 52,
+                "type": "atack"
+            },
+            {
+                "name": "water",
+                "power": 10,
+                "type": "atack"
+            },
+            {
+                "name": "wind",
+                "power": -20,
+                "type": "atack"
+            },
+            {
+                "name": "darkus",
+                "power": 90,
+                "type": "atack"
+            }
+        ]
+    }
+]

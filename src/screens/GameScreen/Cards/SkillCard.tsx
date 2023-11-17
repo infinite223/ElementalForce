@@ -3,8 +3,10 @@ import React, { FC } from 'react'
 import { Card } from '../../../utils/data'
 import GradientProvider from '../../../components/GradientProvider'
 import ElementalsValues from '../../../components/ElementalsValues'
+import Animated, { SharedValue, interpolate, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'
+import CardBack from '../../../components/CardBack'
 
-const SkillCard: FC<{card: Card}> = ({ card: { desc, elementalParams, name} }) => {
+const SkillCard: FC<{card: Card, _rotate: boolean}> = ({ _rotate, card: { desc, elementalParams, name} }) => {
     const findMaxPowerElemental = () => {
       let findingMax = elementalParams[0];
 
@@ -19,21 +21,23 @@ const SkillCard: FC<{card: Card}> = ({ card: { desc, elementalParams, name} }) =
 
     const cardElemental = findMaxPowerElemental()
     console.log(cardElemental)
+
   return (
     <GradientProvider elemental={cardElemental} style={{borderRadius: 2}} cardType='skill'>
-      <View style={styles.cardContainer}>
-
-        <ElementalsValues elementalsValues={elementalParams}/>
-
-        <View  style={styles.descCard}>
-          <Text style={styles.descCardText}>
-            {desc}
-          </Text>
-        </View>
-        <Text style={styles.nameCard}>
-          {name}
-        </Text>
-      </View>
+ 
+          <View style={styles.cardContainer}>
+            <ElementalsValues elementalsValues={elementalParams}/>
+            {desc&&
+              <View style={styles.descCard}>
+                <Text style={styles.descCardText}>
+                  {desc}
+                </Text>
+              </View>
+            }
+            <Text style={styles.nameCard}>
+              {name}
+            </Text>
+          </View>
     </GradientProvider>
   )
 }
@@ -51,11 +55,11 @@ const styles = StyleSheet.create({
         paddingHorizontal: 2,
         paddingVertical: 2,
         borderWidth: 1,
-        borderColor: 'rgba(200, 200, 209, .2)',
+        borderColor: 'rgba(200, 200, 209, .1)',
         gap: 2
     },
     nameCard: {
-      fontSize: 8,
+      fontSize: 5,
       color: 'white',
       fontWeight: '700',
     },
@@ -66,7 +70,7 @@ const styles = StyleSheet.create({
       paddingVertical:1
     },
     descCardText: {
-      fontSize: 4,
+      fontSize: 3,
       color: 'white',
     }
 })
