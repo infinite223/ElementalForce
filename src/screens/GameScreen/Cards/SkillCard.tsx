@@ -1,12 +1,12 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React, { FC } from 'react'
-import { Card } from '../../../utils/data'
+import { Card } from '../../../utils/types'
 import GradientProvider from '../../../components/GradientProvider'
 import ElementalsValues from '../../../components/ElementalsValues'
 import Animated, { SharedValue, interpolate, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'
 import CardBack from '../../../components/CardBack'
 
-const SkillCard: FC<{card: Card, _rotate: boolean}> = ({ _rotate, card: { desc, elementalParams, name} }) => {
+const SkillCard: FC<{card: Card}> = ({ card: { desc, elementalParams, name} }) => {
     const findMaxPowerElemental = () => {
       let findingMax = elementalParams[0];
 

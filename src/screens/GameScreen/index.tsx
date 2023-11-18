@@ -5,14 +5,14 @@ import SkillCard from './Cards/SkillCard'
 import ChampCard from './Cards/ChampCard'
 import DragDrop from '../../components/DragDrop'
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { Card, basicCards } from '../../utils/data' 
 import OwnBoardCards from './OwnBoardCards'
 import { databases } from '../../appWriteConfig'
+import { Card } from '../../utils/types'
 
 const spellsJson = require('./../../utils/cards/spells/spells.json');
 
 const Game = () => {
-  const [cards, setCards] = useState<Card[] | null>(null)
+  const [cards, setCards] = useState<Card [] | null>(null)
 
   useEffect(() => {
     // Wczytaj dane z pliku JSON po zamontowaniu komponentu

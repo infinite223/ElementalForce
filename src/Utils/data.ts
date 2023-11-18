@@ -1,120 +1,109 @@
-export type spellCardsType = "block" | "atack"
-export type elementals = "darkus" | "water" | "fire" | "wind"
-export type elementalParamsType = {
-    name: elementals,
-    power: number,
-    type: spellCardsType
-}
+import { Card, SpellCardsValues } from "./types";
 
-export type Card = {
-    name: string,
-    desc: string,
-    elementalParams: elementalParamsType[]
-    
-}
-export const basicCards: Card[] = [
-    {
-        name: 'Magic wall',
-        desc: "Postać tworzy barierę",
-        elementalParams: [
-            {
-                name: 'water',
-                power: 32,
-                type: 'block'
-            },
-            {
-                name: 'wind',
-                power: 62,
-                type: 'block'
-            },
-            {
-                name: 'darkus',
-                power: 42,
-                type: 'block'
-            },
-            {
-                name: 'fire',
-                power: 22,
-                type: 'block'
-            },
-        ]
-    },
-    {
-        name: 'Fire ball',
-        desc: "Postać tworzy barierę",
-        elementalParams: [
-            {
-                name: 'water',
-                power: 12,
-                type: 'atack'
-            },
-            {
-                name: 'wind',
-                power: 22,
-                type: 'atack'
-            },
-            {
-                name: 'darkus',
-                power: 25,
-                type: 'atack'
-            },
-            {
-                name: 'fire',
-                power: 72,
-                type: 'atack'
-            },
-        ]
-    },
-    {
-        name: 'Shadow atack',
-        desc: "Postać tworzy barierę",
-        elementalParams: [
-            {
-                name: 'water',
-                power: 12,
-                type: 'atack'
-            },
-            {
-                name: 'wind',
-                power: 52,
-                type: 'atack'
-            },
-            {
-                name: 'darkus',
-                power: 95,
-                type: 'atack'
-            },
-            {
-                name: 'fire',
-                power: 12,
-                type: 'atack'
-            },
-        ]
-    },
-    {
-        name: 'Shadow atack',
-        desc: "Postać tworzy barierę",
-        elementalParams: [
-            {
-                name: 'water',
-                power: 12,
-                type: 'atack'
-            },
-            {
-                name: 'wind',
-                power: 52,
-                type: 'atack'
-            },
-            {
-                name: 'darkus',
-                power: 195,
-                type: 'atack'
-            },
-            {
-                name: 'fire',
-                power: 12,
-                type: 'atack'
-            },
-        ]
-    },
-]
+
+// export const basicCards: Card[] = [
+//     {
+//         name: 'Magic wall',
+//         desc: "Postać tworzy barierę",
+//         elementalParams: [
+//             {
+//                 name: 'water',
+//                 power: 32,
+//                 type: SpellCardsValues.Block
+//             },
+//             {
+//                 name: 'wind',
+//                 power: 62,
+//                 type: SpellCardsValues.Block
+//             },
+//             {
+//                 name: 'darkus',
+//                 power: 42,
+//                 type: SpellCardsValues.Block
+//             },
+//             {
+//                 name: 'fire',
+//                 power: 22,
+//                 type: SpellCardsValues.Block
+//             },
+//         ]
+//     },
+//     {
+//         name: 'Fire ball',
+//         desc: "Postać tworzy barierę",
+//         elementalParams: [
+//             {
+//                 name: 'water',
+//                 power: 12,
+//                 type: SpellCardsValues.Atack
+//             },
+//             {
+//                 name: 'wind',
+//                 power: 22,
+//                 type: SpellCardsValues.Atack
+//             },
+//             {
+//                 name: 'darkus',
+//                 power: 25,
+//                 type: SpellCardsValues.Atack
+//             },
+//             {
+//                 name: 'fire',
+//                 power: 72,
+//                 type: SpellCardsValues.Atack
+//             },
+//         ]
+//     },
+//     {
+//         name: 'Shadow atack',
+//         desc: "Postać tworzy barierę",
+//         elementalParams: [
+//             {
+//                 name: 'water',
+//                 power: 12,
+//                 type: SpellCardsValues.Atack
+//             },
+//             {
+//                 name: 'wind',
+//                 power: 52,
+//                 type: SpellCardsValues.Atack
+//             },
+//             {
+//                 name: 'darkus',
+//                 power: 95,
+//                 type: SpellCardsValues.Atack
+//             },
+//             {
+//                 name: 'fire',
+//                 power: 12,
+//                 type: SpellCardsValues.Atack
+//             },
+//         ]
+//     },
+//     {
+//         name: 'Shadow atack',
+//         desc: "Postać tworzy barierę",
+//         elementalParams: [
+//             {
+//                 name: 'water',
+//                 power: 12,
+//                 type: SpellCardsValues.Atack
+//             },
+//             {
+//                 name: 'wind',
+//                 power: 52,
+//                 type: SpellCardsValues.Atack
+//             },
+//             {
+//                 name: 'darkus',
+//                 power: 195,
+//                 type: SpellCardsValues.Atack
+//             },
+//             {
+//                 name: 'fire',
+//                 power: 12,
+//                 type: SpellCardsValues.Atack
+//             },
+//         ]
+//     },
+// ]

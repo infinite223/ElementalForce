@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React, {FC} from 'react'
 import GradientProvider from './GradientProvider'
-import { Card } from '../utils/data'
+import { Card } from '../utils/types'
 
 const CardBack:FC<{card: Card}> = ({ card: {elementalParams} }) => {
     const findMaxPowerElemental = () => {
