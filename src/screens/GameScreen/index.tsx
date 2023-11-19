@@ -1,27 +1,51 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { heightScreen, widthScreen } from '../../utils/constants'
-import SkillCard from './Cards/SkillCard'
 import ChampCard from './Cards/ChampCard'
-import DragDrop from '../../components/DragDrop'
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import OwnBoardCards from './OwnBoardCards'
-import { databases } from '../../appWriteConfig'
-import { Card } from '../../utils/types'
+import { Card, Champ, ElementalsValues, PassiveValues } from '../../utils/types'
 
 const spellsJson = require('./../../utils/cards/spells/spells.json');
+const enemyChampion: Champ = {
+  desc: '',
+  element: ElementalsValues.Elemental_1,
+  name: "Skorpion cienia",
+  params: {
+    block: 140,
+    power: 220,
+    passive: PassiveValues.Passive_1
+  }
+}
+
+const startChampion: Champ = {
+  desc: '',
+  element: ElementalsValues.Elemental_2,
+  name: "Rycerz wody",
+  params: {
+    block: 100,
+    power: 240,
+    passive: PassiveValues.Passive_1
+  }
+}
 
 const Game = () => {
   const [cards, setCards] = useState<Card [] | null>(null)
 
   useEffect(() => {
-    // Wczytaj dane z pliku JSON po zamontowaniu komponentu
     setCards(spellsJson);
   }, []);
 
   return (
       <View style={styles.gameContainer}>
-        <ChampCard/>
+        <ChampCard
+          enemy={true}
+          champ={enemyChampion}
+        />
+
+        <ChampCard
+          enemy={false}
+          champ={startChampion}
+        />
 
         {cards&&<OwnBoardCards cards={cards}/>}
       </View>

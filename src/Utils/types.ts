@@ -10,6 +10,10 @@ export enum ElementalsValues {
     Elemental_4 = "wind",
 }
 
+export enum PassiveValues {
+    Passive_1 = "powerUp",
+}
+
 export type spellCardsType = SpellCardsValues
 export type elementals = ElementalsValues
 export type elementalParamsType = {
@@ -18,9 +22,7 @@ export type elementalParamsType = {
     type: spellCardsType
 }
 
-export type passiveTypes = 
-    "powerUp" |
-    "";
+export type passiveTypes = PassiveValues
 
 export type Card = {
     name: string,
@@ -28,7 +30,7 @@ export type Card = {
     elementalParams: elementalParamsType[]
 }
 
-export type champ = {
+export type Champ = {
     name: string,
     desc: string, 
     element: elementals,
@@ -37,4 +39,18 @@ export type champ = {
         block: number,
         passive: passiveTypes
     }
+}
+
+export type User = {
+    id: string,
+    name: string, 
+    champ: Champ,
+    card?: Card
+    // ...
+}
+
+export type gameState = {
+     id: string,
+     user: User[],
+     
 }

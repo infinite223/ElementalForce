@@ -11,7 +11,7 @@ import Animated, {
     withTiming,
  } from 'react-native-reanimated'
 import CardBack from './CardBack';
-import { Card } from '../utils/data';
+import { Card } from '../utils/types';
 
 type ContextType = {
     x: number,
@@ -69,7 +69,7 @@ const DragDrop:FC<DragDropProps> = ({card,  children, onDrag, onDrop }) => {
                 runOnJS(onDrop)(x.value, y.value)
                 scale.value = withTiming(1, { });
 
-                if (event.absoluteY < 250) {
+                if (event.absoluteY < 350) {
                     console.log('drop', event.absoluteY, event.translationY)
 
                     rotateX.value = withSpring('360deg')
@@ -91,7 +91,7 @@ const DragDrop:FC<DragDropProps> = ({card,  children, onDrag, onDrop }) => {
       return{
         transform:[
           {
-            rotateY : withTiming(`${rotateValue}deg`,{duration:1000})
+            rotateX : withTiming(`${rotateValue}deg`,{duration:1000})
           }
         ]
       }
@@ -101,7 +101,7 @@ const DragDrop:FC<DragDropProps> = ({card,  children, onDrag, onDrop }) => {
       return{
         transform:[
           {
-            rotateY : withTiming(`${rotateValue}deg`,{duration:1000})
+            rotateX : withTiming(`${rotateValue}deg`,{duration:1000})
           }
         ]
       }

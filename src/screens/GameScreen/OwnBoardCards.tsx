@@ -1,7 +1,7 @@
 import { View, StyleSheet } from 'react-native'
 import React, { FC } from 'react'
 import { widthScreen } from '../../utils/constants'
-import { Card } from '../../utils/data'
+import { Card } from '../../utils/types'
 import SkillCard from './Cards/SkillCard'
 import DragDrop from '../../components/DragDrop'
 import { databases } from '../../appWriteConfig'
