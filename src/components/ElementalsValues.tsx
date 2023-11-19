@@ -1,6 +1,6 @@
 import { View, FlatList, StyleSheet, Text } from 'react-native'
 import React, { FC } from 'react'
-import { elementalParamsType } from '../utils/data'
+import { elementalParamsType } from '../utils/types'
 import GradientProvider from './GradientProvider'
 
 interface ElementalsValuesProps {
@@ -13,11 +13,11 @@ const ElementalsValues:FC<ElementalsValuesProps> = ({elementalsValues}) => {
         scrollEnabled={false}
         contentContainerStyle={{gap: 3, padding: 1}}
         data={elementalsValues}
-        renderItem={({item}) => 
+        renderItem={({item: {name, power, type}}) => 
         <View style={{flexDirection: 'row', alignItems: 'center', gap: 3}}>
           <GradientProvider 
             cardType='elemental' 
-            elemental={item} 
+            elemental={name} 
             style={{
               borderRadius: 50,
               // borderColor: item.type ==='atack'?'rgba(250, 110, 110, 1)':'rgba(250, 250, 250, .9)'
@@ -25,12 +25,12 @@ const ElementalsValues:FC<ElementalsValuesProps> = ({elementalsValues}) => {
           >
             <View style={styles.elementalValue}>
               <Text style={[styles.elementalValueText]}>
-                {item.power}
+                {power}
               </Text>
             </View>
           </GradientProvider>
           <Text style={styles.typeCard}>
-            {item.type.at(0)?.toUpperCase()}
+            {type.at(0)?.toUpperCase()}
           </Text>
         </View>
         }

@@ -4,6 +4,7 @@ import { colors } from './src/utils/colors';
 import { useState } from 'react'
 import Game from './src/screens/GameScreen';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import SelectElementalAndChampion from './src/screens/SelectElementalAndChampion';
 
 export default function App() {
   const [showGame, setShowGame] = useState(false);
@@ -11,7 +12,8 @@ export default function App() {
     <GestureHandlerRootView style={{flex: 1}}>
       <View style={styles.container}>
         {showGame&& 
-          <Game/>
+          // <Game/>
+          <SelectElementalAndChampion/>
         }
         
         <Text style={styles.appName}>

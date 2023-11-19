@@ -17,7 +17,7 @@ const enemyChampion: Champ = {
   }
 }
 
-const startChampion: Champ = {
+export const startChampion: Champ = {
   desc: '',
   element: ElementalsValues.Elemental_2,
   name: "Rycerz wody",

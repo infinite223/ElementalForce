@@ -1,11 +1,11 @@
 import { View, Text, StyleSheet, StyleProp } from 'react-native'
 import React, { FC } from 'react'
 import { LinearGradient } from 'expo-linear-gradient'
-import { elementals, spellCardsType } from '../utils/data'
+import { elementals, spellCardsType } from '../utils/types'
 
 interface GradientProviderProps {
     children: JSX.Element | JSX.Element [],
-    elemental: {name: elementals, power: number, type: spellCardsType},
+    elemental: elementals,
     style?: any,
     cardType: "skill" | "champ" | "elemental"
 }
@@ -32,7 +32,7 @@ const gradients = [
 const backCard = ['#010102', '#191111', '#261211']
 
 const GradientProvider:FC<GradientProviderProps> = ({ children, elemental, style, cardType }) => {
-    const findGradeint = gradients.find((gradient) => gradient.name === elemental.name)
+    const findGradeint = gradients.find((gradient) => gradient.name === elemental)
 
     return (
     <LinearGradient 

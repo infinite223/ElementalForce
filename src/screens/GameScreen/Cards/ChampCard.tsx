@@ -2,14 +2,14 @@ import { View, Text, StyleSheet } from 'react-native'
 import React, { FC } from 'react'
 import GradientProvider from '../../../components/GradientProvider'
 import { heightScreen, widthScreen } from '../../../utils/constants'
-import { Champ, ElementalsValues, SpellCardsValues, elementals, spellCardsType } from '../../../utils/types'
+import { Champ, SpellCardsValues } from '../../../utils/types'
 
 const ChampCard:FC<{champ: Champ, enemy: boolean}> = ({enemy, champ: { desc, element, name, params }}) => {
 
   return (
     <View style={[styles.cardContainer, {
       top: enemy?0:'auto', height: enemy?heightScreen/2.42: heightScreen / 1.7}]}>
-        <GradientProvider elemental={{name: element, power: params.power, type: SpellCardsValues.Atack}} style={{flex: 1, opacity: .7}} cardType='champ'>
+        <GradientProvider elemental={element} style={{flex: 1, opacity: .7}} cardType='champ'>
           <View style={[styles.cardContent, {justifyContent: enemy?'flex-end':'flex-start'}]}>
             <Text style={styles.cardName}>
               {name}

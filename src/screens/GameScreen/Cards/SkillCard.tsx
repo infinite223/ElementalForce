@@ -23,7 +23,7 @@ const SkillCard: FC<{card: Card}> = ({ card: { desc, elementalParams, name} }) =
     console.log(cardElemental)
 
   return (
-    <GradientProvider elemental={cardElemental} style={{borderRadius: 2}} cardType='skill'>
+    <GradientProvider elemental={cardElemental.name} style={{borderRadius: 2}} cardType='skill'>
  
           <View style={styles.cardContainer}>
             <ElementalsValues elementalsValues={elementalParams}/>
