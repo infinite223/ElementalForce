@@ -1,9 +1,11 @@
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, SafeAreaView } from 'react-native'
 import React, { useState } from 'react'
 import { heightScreen, widthScreen } from '../utils/constants'
-import { ElementalsValues } from '../utils/types'
+import { Champ, ElementalsValues, elementals } from '../utils/types'
 import GradientProvider from '../components/GradientProvider'
 import { startChampion } from './GameScreen'
+import { globalStyles } from '../utils/globalStyles'
+const champsJson = require('./../utils/cards/champs/champs.json');
 
 const Elementals = [
   ElementalsValues.Elemental_1,
@@ -14,6 +16,7 @@ const Elementals = [
 
 const SelectElementalAndChampion = () => {
   const [selectedElemental, setSelectedElemental] = useState<ElementalsValues>(ElementalsValues.Elemental_1)
+  const [selectedChampion, setSelectedChampion] = useState<Champ | null>(null)
   
   const champions = [
     startChampion,
@@ -21,58 +24,156 @@ const SelectElementalAndChampion = () => {
     startChampion
   ]
 
+  const getChampions = (elemental: elementals) => {
+   return  champsJson.filter((champ: Champ) => champ.element === elemental )
+  }  
+
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.headerText}>
-        Wybierz domene
-      </Text>
-      <FlatList
-        data={Elementals}
-        contentContainerStyle={{ gap: 10, marginHorizontal: 5}}
-        showsHorizontalScrollIndicator={false}
-        horizontal
-        renderItem={({ item }) => 
+    <GradientProvider
+      elemental={selectedElemental}
+      cardType='background'
+      style={styles.container}
+    >
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.headerText}>
+          Wybierz domene
+        </Text>
+        <View style={{flexDirection: 'row', alignItems: 'center', gap: 10, justifyContent: 'center', alignSelf: 'center'}}>
           <GradientProvider 
-            elemental={item} 
+            elemental={Elementals[2]} 
             cardType='elemental'
-            style={{borderRadius: 50, height: 50}}
+            style={{
+              borderRadius: 50, height: 100, width: 100,
+              borderColor: 'rgba(255, 255, 255, .3)',
+              borderWidth: selectedElemental === Elementals[2]?1:0
+            }}
           >
             <TouchableOpacity 
-              onPress={() =>  setSelectedElemental(item)}
+              onPress={() => {
+                 setSelectedElemental(Elementals[2])
+                 setSelectedChampion(null)
+              }}
               style={styles.elementalItem}
             >
-              <Text style={styles.elementalText}>{item}</Text>
+              <Text style={styles.elementalText}>{Elementals[2]}</Text>
             </TouchableOpacity>
-          </GradientProvider>
-        }
-      />
-      <Text style={styles.headerText}>
-        Wybierz postać
-      </Text>
-
-      <FlatList
-        data={champions}
-        contentContainerStyle={{}}
-        numColumns={2}
-        renderItem={({ item }) => 
+          </GradientProvider> 
           <GradientProvider 
-            elemental={selectedElemental} 
+            elemental={Elementals[0]} 
             cardType='elemental'
-            style={{borderRadius: 5, margin: 5}}
+            style={{
+              borderRadius: 50, height: 100, width: 100,
+              borderColor: 'rgba(255, 255, 255, .3)',
+              borderWidth: selectedElemental === Elementals[0]?1:0
+            }}
           >
             <TouchableOpacity 
-              onPress={() => {}}
-              style={styles.championItem}
+                onPress={() => {
+                  setSelectedElemental(Elementals[0])
+                  setSelectedChampion(null)
+               }}
+              style={styles.elementalItem}
             >
-              <Text style={styles.params}>
-                {item.params.power}A / {item.params.block}B
-              </Text>
-              <Text style={styles.champName}>{item.name}</Text>
+              <Text style={styles.elementalText}>{Elementals[0]}</Text>
+            </TouchableOpacity>
+          </GradientProvider> 
+          <GradientProvider 
+            elemental={Elementals[1]} 
+            cardType='elemental'
+            style={{
+              borderRadius: 50, height: 100, width: 100,
+              borderColor: 'rgba(255, 255, 255, .3)',
+              borderWidth: selectedElemental === Elementals[1]?1:0
+            }}
+          >
+            <TouchableOpacity 
+              onPress={() => {
+                  setSelectedElemental(Elementals[1])
+                  setSelectedChampion(null)
+              }}
+              style={styles.elementalItem}
+            >
+              <Text style={styles.elementalText}>{Elementals[1]}</Text>
+            </TouchableOpacity>
+          </GradientProvider> 
+        </View>
+        {/* <FlatList
+          data={Elementals}
+          contentContainerStyle={{ gap: 10, marginHorizontal: 5, maxWidth: widthScreen}}
+          
+          style={{ flexGrow: 0}}
+          showsHorizontalScrollIndicator={false}
+          
+          horizontal
+          renderItem={({ item }) => 
+            <GradientProvider 
+              elemental={item} 
+              cardType='elemental'
+              style={{
+                borderRadius: 50, height: 100, width: 100,
+                borderColor: 'rgba(255, 255, 255, .3)',
+                borderWidth: selectedElemental === item?1:0
+              }}
+            >
+              <TouchableOpacity 
+                onPress={() =>  setSelectedElemental(item)}
+                style={styles.elementalItem}
+              >
+                <Text style={styles.elementalText}>{item}</Text>
+              </TouchableOpacity>
+            </GradientProvider>
+          }
+        /> */}
+        <Text style={styles.headerText}>
+          Wybierz postać
+        </Text>
+        <View style={{flex: 1}}>
+        <FlatList
+          data={getChampions(selectedElemental)}
+          contentContainerStyle={{ }}
+          style={{}}
+          numColumns={2}
+          renderItem={({ item }) => 
+            <GradientProvider 
+              elemental={selectedElemental} 
+              cardType='elemental'
+              style={[{
+                borderRadius: 5, margin: 5,
+                borderColor: 'rgba(255, 255, 255, .3)',
+                borderWidth: selectedChampion === item?1:0
+              }]}
+            >
+              <TouchableOpacity 
+                onPress={() => setSelectedChampion(item)}
+                style={[styles.championItem]}
+              >
+                <Text style={styles.params}>
+                  {item.params.power}A / {item.params.block}B
+                </Text>
+                <Text style={styles.champName}>{item.name}</Text>
+              </TouchableOpacity>
+            </GradientProvider>
+          }
+        />
+        </View>
+
+        {selectedChampion&&
+          <GradientProvider
+            elemental={selectedElemental}
+            cardType='elemental'
+            style={styles.button}
+          >
+            <TouchableOpacity 
+              style={styles.button}
+            >
+                <Text style={styles.buttonText}>
+                  Szukaj gry
+                </Text>
             </TouchableOpacity>
           </GradientProvider>
         }
-      />
-    </SafeAreaView>
+      </SafeAreaView>
+    </GradientProvider> 
   )
 }
 
@@ -83,8 +184,11 @@ const styles = StyleSheet.create({
       fontSize: 18,
       color: 'rgba(255, 255, 255, .8)',
       paddingHorizontal: 10,
-      marginVertical: 15,
+      marginVertical: 25,
       fontWeight: '800',
+      textAlign:'center',
+      alignSelf:'center',
+      letterSpacing: 1
     },
     container: {
         width: widthScreen,
@@ -93,28 +197,29 @@ const styles = StyleSheet.create({
         top: 0,
         left: 0,
 
-        backgroundColor: 'black',
+        // backgroundColor: 'black',
         zIndex:2,
-        // alignItems:"center"
+        justifyContent:'flex-start',
+        alignItems:'flex-start'
     },
     elementalItem: {
-      height: 50,
-      width: 150,
+      height: 100,
+      width: 100,
       alignItems:'center',
       justifyContent: 'center',
       borderRadius: 50
     },
     elementalText: {
-      fontSize: 15,
-      color: 'rgba(250, 250, 250, .7)',
+      fontSize: 12,
+      color: 'rgba(250, 250, 250, 1)',
       fontWeight:'900',
       textTransform: 'uppercase',
       fontStyle: 'italic',
       letterSpacing: 2
     },
     championItem: {
-      height: 250,
-      width: 150,
+      height: 270,
+      width: (widthScreen/2) - 10,
 
       borderRadius: 5,
       padding: 10,
@@ -130,5 +235,23 @@ const styles = StyleSheet.create({
       color: 'white',
       fontSize: 12,
       fontWeight: '500'
+    },
+    button: {
+      borderRadius: 50,
+      paddingVertical: 15,
+
+      // position: 'absolute',
+      // bottom: 20,
+      flexDirection: 'row',
+      height: 55,
+      width: widthScreen - 20,
+      alignSelf:'center',
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+    buttonText: {
+      color: "white",
+      fontWeight: '800',
+      fontSize: 17
     }
 })

@@ -1,0 +1,53 @@
+[
+    {
+        "name": "Wodny rycerz",
+        "desc": "",
+        "element": "water",
+        "params": {
+            "block": 100,
+            "power": 240,
+            "passive": "powerUp"
+        }
+    },
+    {
+        "name": "Mroczny cień",
+        "desc": "",
+        "element": "darkus",
+        "params": {
+            "block": 70,
+            "power": 260,
+            "passive": "powerUp"
+        }
+    },
+    {
+        "name": "Demon wieczności",
+        "desc": "",
+        "element": "darkus",
+        "params": {
+            "block": 20,
+            "power": 300,
+            "passive": "powerUp"
+        }
+    },
+    
+    {
+        "name": "Ognisty skorpion",
+        "desc": "",
+        "element": "fire",
+        "params": {
+            "block": 100,
+            "power": 220,
+            "passive": "powerUp"
+        }
+    },
+    {
+        "name": "Wietrzny szaman",
+        "desc": "",
+        "element": "wind",
+        "params": {
+            "block": 120,
+            "power": 180,
+            "passive": "powerUp"
+        }
+    }
+]
