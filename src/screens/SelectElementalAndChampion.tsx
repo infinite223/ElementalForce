@@ -7,6 +7,8 @@ import { startChampion } from './GameScreen'
 import { globalStyles } from '../utils/globalStyles'
 import { databases } from '../appWriteConfig'
 import { ID } from 'appwrite'
+import { useSelector, useDispatch } from 'react-redux'
+import { selectGameState, setGameState } from '../slices/gameStateSlice'
 const champsJson = require('./../utils/cards/champs/champs.json');
 
 const Elementals = [
@@ -19,17 +21,19 @@ const Elementals = [
 const SelectElementalAndChampion = () => {
   const [selectedElemental, setSelectedElemental] = useState<ElementalsValues>(ElementalsValues.Elemental_1)
   const [selectedChampion, setSelectedChampion] = useState<Champ | null>(null)
-  
+  const { gameState }:{gameState: gameState | null } = useSelector(selectGameState)
+
+  const dispatch = useDispatch()
   const champions = [
     startChampion,
     startChampion,
     startChampion
-  ]
+  ] 
 
   const getChampions = (elemental: elementals) => {
    return  champsJson.filter((champ: Champ) => champ.element === elemental )
   }  
-
+  console.log(gameState)
   const initGameState = () => {
     if(selectedChampion) {
       const gameState = {
@@ -39,20 +43,7 @@ const SelectElementalAndChampion = () => {
         card_2_id: 2,
         champ_1_id: 1,
         champ_2_id: 2,
-        // users: [
-        //   {
-        //     id: "1",
-        //     name: "Marcin",
-        //     card: null,
-        //     champ: selectedChampion
-        //   },
-        //   {
-        //     id: "2",
-        //     name: "Zbysio",
-        //     card: null,
-        //     champ: champsJson[0 ]
-        //   },
-        // ]
+        champs: [champsJson[0], champsJson[4]]
       } 
 
       const promise = databases.createDocument(
@@ -63,12 +54,18 @@ const SelectElementalAndChampion = () => {
       );
         
       promise.then(function (response) {
-          console.log(response);
+          console.log(response.champ_1_id);
+
+          dispatch(setGameState(response))
       }, function (error) {
           console.log(error);
       });
 
     }
+  }
+
+  if(gameState) {
+    return;
   }
 
   return (
@@ -191,7 +188,7 @@ const SelectElementalAndChampion = () => {
                 style={[styles.championItem]}
               >
                 <Text style={styles.params}>
-                  {item.params.power}A / {item.params.block}B
+                  {item.power}A / {item.block}B
                 </Text>
                 <Text style={styles.champName}>{item.name}</Text>
               </TouchableOpacity>

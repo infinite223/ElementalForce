@@ -1,7 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const gameState = null
+//  {
+//   id: "1",
+//   card_1_id: 1,
+//   card_2_id: 2,
+//   champ_1_id: 1,
+//   champ_2_id: 2,
+// } 
+
 const initialState = {
-  gameState: []
+  gameState: gameState
 }
 
 export const gameStateSlice = createSlice({

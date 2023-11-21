@@ -4,7 +4,7 @@ import GradientProvider from '../../../components/GradientProvider'
 import { heightScreen, widthScreen } from '../../../utils/constants'
 import { Champ, SpellCardsValues } from '../../../utils/types'
 
-const ChampCard:FC<{champ: Champ, enemy: boolean}> = ({enemy, champ: { desc, element, name, params }}) => {
+const ChampCard:FC<{champ: Champ, enemy: boolean}> = ({enemy, champ: { desc, element, name, block, passive, power }}) => {
 
   return (
     <View style={[styles.cardContainer, {
@@ -17,10 +17,10 @@ const ChampCard:FC<{champ: Champ, enemy: boolean}> = ({enemy, champ: { desc, ele
 
             <View>
               <Text style={styles.powerText}>
-                {params.power}A / {params.block}B
+                {power}A / {block}B
               </Text>
               <Text style={styles.passiveText}>
-                {params.passive}
+                {passive}
               </Text>
             </View>
 

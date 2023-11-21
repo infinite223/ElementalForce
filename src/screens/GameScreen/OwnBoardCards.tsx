@@ -6,6 +6,8 @@ import SkillCard from './Cards/SkillCard'
 import DragDrop from '../../components/DragDrop'
 import { databases } from '../../appWriteConfig'
 import { useSharedValue } from 'react-native-reanimated'
+import { ID } from 'appwrite'
+const champsJson = require('./../../utils/cards/champs/champs.json');
 
 interface OwnBoardCards {
     cards: Card[]
@@ -17,16 +19,27 @@ const OwnBoardCards: FC<OwnBoardCards> = ({ cards }) => {
       }
     
     const drop = (x: number, y: number) => {
-        // const promise = databases.listDocuments(
-        //     '6557c6fc6b9c583de93c',
-        //     '6557c71d64e2181cbe11',
-        //  );
-          
-        // promise.then(function (response) {
-        //     console.log(response);
-        // }, function (error) {
-        //     console.log(error);
-        // });
+        // const champ = {
+        //     id:  champsJson[0].id,
+        //     name:  champsJson[0].id,
+        //     block:  champsJson[0].id,
+        //     power:  champsJson[0].id,
+        //     element:  champsJson[0].id
+        //     passive:  champsJson[0].id
+        // }
+        const promise = databases.createDocument(
+            '6557c6fc6b9c583de93c',
+            '655cc782383a16b711f0',
+            ID.unique(),
+            champsJson[0],
+          );
+            
+          promise.then(function (response) {
+              console.log(response);
+          }, function (error) {
+              console.log(error);
+          });
+    
     }
       
   return (

@@ -1,39 +1,68 @@
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { colors } from './src/utils/colors';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Game from './src/screens/GameScreen';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import SelectElementalAndChampion from './src/screens/SelectElementalAndChampion';
+import { store } from './store';
+import { Provider } from 'react-redux';
+import { selectGameState } from './src/slices/gameStateSlice';
+import { useSelector } from 'react-redux'
+import client from './src/appWriteConfig';
 
 export default function App() {
   const [showGame, setShowGame] = useState(false);
+  useEffect(() => {  
+    const unsubscribe = client.subscribe(`account`, response => {
+      console.log(response.channels)
+      // databases.${DATABASE_ID}.collections.${collectionId}.documents.${"655d1b1fb23f07950c13"}
+        // if(response.events.includes("databases.*.collections.*.documents.*.create")){
+        //     console.log('A MESSAGE WAS CREATED')
+        //     console.log(response.payload, "a")
+        // }
+
+        // if(response.events.includes("databases.*.collections.*.documents.*.delete")){
+        //     console.log('A MESSAGE WAS DELETED!!!')
+        //     console.log(response.payload, "d")
+        // }
+    });
+
+    console.log('unsubscribe:', unsubscribe)
+  
+    return () => {
+      unsubscribe();
+    };
+  }, []);
   return (
     <GestureHandlerRootView style={{flex: 1}}>
-      <View style={styles.container}>
-        {showGame&& 
-          // <Game/>
-          <SelectElementalAndChampion/>
-        }
-        
-        <Text style={styles.appName}>
-          Elemental
-          <Text style={{color: colors.provideColor}}>
-            Force
-          </Text>
-        </Text>
+      <Provider store={store}>
+        <View style={styles.container}>
+          {showGame&& 
+            <SelectElementalAndChampion/>
+          }
 
-        <TouchableOpacity 
-          style={styles.button}
-          onPress={() => setShowGame(true)}
-        >
-          <Text style={styles.buttonText}>
-            Wejdź do gry
+          <Game/>
+          
+          <Text style={styles.appName}>
+            Elemental
+            <Text style={{color: colors.provideColor}}>
+              Force
+            </Text>
           </Text>
-        </TouchableOpacity> 
 
-        <StatusBar style="auto" />
-      </View>
+          <TouchableOpacity 
+            style={styles.button}
+            onPress={() => setShowGame(true)}
+          >
+            <Text style={styles.buttonText}>
+              Wejdź do gry
+            </Text>
+          </TouchableOpacity> 
+
+          <StatusBar style="auto" />
+        </View>
+      </Provider>
     </GestureHandlerRootView>
   );
 }

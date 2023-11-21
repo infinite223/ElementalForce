@@ -36,11 +36,9 @@ export type Champ = {
     name: string,
     desc: string, 
     element: elementals,
-    params: {
         power: number,
         block: number,
         passive: passiveTypes
-    }
 }
 
 export type User = {
@@ -53,6 +51,8 @@ export type User = {
 
 export type gameState = {
      id: string,
-     users: User[],
-     
+     card_1_id: number,
+     card_2_id: number,
+     champ_1_id: number,
+     champ_2_id: number,
 }

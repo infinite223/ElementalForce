@@ -19,7 +19,7 @@ const CardBack:FC<{card: Card}> = ({ card: {elementalParams} }) => {
       const cardElemental = findMaxPowerElemental()
       console.log(cardElemental)
   return (
-    <GradientProvider elemental={cardElemental} style={{borderRadius: 2}} cardType='skill'>
+    <GradientProvider elemental={cardElemental.name} style={{borderRadius: 2}} cardType='skill'>
         <View style={styles.cardContainer}>
             <Text style={styles.firstLetter}>
                 E
