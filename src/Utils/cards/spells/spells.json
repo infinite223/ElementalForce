@@ -1,5 +1,6 @@
 [
     {
+        "id": 1,
         "name": "Haos ciemności",
         "desc": "",
         "elementalParams": [
@@ -26,6 +27,7 @@
         ]
     },
     {
+        "id": 2,
         "name": "Ściana mroku",
         "desc": "",
         "elementalParams": [
@@ -52,6 +54,7 @@
         ]
     },
     {
+        "id": 3,
         "name": "Mroczny aktak",
         "desc": "",
         "elementalParams": [

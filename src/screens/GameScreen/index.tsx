@@ -7,6 +7,7 @@ import { Card, Champ, ElementalsValues, PassiveValues } from '../../utils/types'
 
 const spellsJson = require('./../../utils/cards/spells/spells.json');
 const enemyChampion: Champ = {
+  id: 1,
   desc: '',
   element: ElementalsValues.Elemental_1,
   name: "Skorpion cienia",
@@ -18,6 +19,7 @@ const enemyChampion: Champ = {
 }
 
 export const startChampion: Champ = {
+  id:2,
   desc: '',
   element: ElementalsValues.Elemental_2,
   name: "Rycerz wody",

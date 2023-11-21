@@ -25,12 +25,14 @@ export type elementalParamsType = {
 export type passiveTypes = PassiveValues
 
 export type Card = {
+    id: number,
     name: string,
     desc: string,
     elementalParams: elementalParamsType[]
 }
 
 export type Champ = {
+    id: number,
     name: string,
     desc: string, 
     element: elementals,
@@ -45,12 +47,12 @@ export type User = {
     id: string,
     name: string, 
     champ: Champ,
-    card?: Card
+    card?: Card | null
     // ...
 }
 
 export type gameState = {
      id: string,
-     user: User[],
+     users: User[],
      
 }

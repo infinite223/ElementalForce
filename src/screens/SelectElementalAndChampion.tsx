@@ -1,10 +1,12 @@
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, SafeAreaView } from 'react-native'
 import React, { useState } from 'react'
 import { heightScreen, widthScreen } from '../utils/constants'
-import { Champ, ElementalsValues, elementals } from '../utils/types'
+import { Champ, ElementalsValues, elementals, gameState } from '../utils/types'
 import GradientProvider from '../components/GradientProvider'
 import { startChampion } from './GameScreen'
 import { globalStyles } from '../utils/globalStyles'
+import { databases } from '../appWriteConfig'
+import { ID } from 'appwrite'
 const champsJson = require('./../utils/cards/champs/champs.json');
 
 const Elementals = [
@@ -27,6 +29,47 @@ const SelectElementalAndChampion = () => {
   const getChampions = (elemental: elementals) => {
    return  champsJson.filter((champ: Champ) => champ.element === elemental )
   }  
+
+  const initGameState = () => {
+    if(selectedChampion) {
+      const gameState = {
+        id: "1",
+        // user_2_id: "2",
+        card_1_id: 1,
+        card_2_id: 2,
+        champ_1_id: 1,
+        champ_2_id: 2,
+        // users: [
+        //   {
+        //     id: "1",
+        //     name: "Marcin",
+        //     card: null,
+        //     champ: selectedChampion
+        //   },
+        //   {
+        //     id: "2",
+        //     name: "Zbysio",
+        //     card: null,
+        //     champ: champsJson[0 ]
+        //   },
+        // ]
+      } 
+
+      const promise = databases.createDocument(
+        '6557c6fc6b9c583de93c',
+        '6557c71d64e2181cbe11',
+        ID.unique(),
+        gameState,
+      );
+        
+      promise.then(function (response) {
+          console.log(response);
+      }, function (error) {
+          console.log(error);
+      });
+
+    }
+  }
 
   return (
     <GradientProvider
@@ -163,7 +206,8 @@ const SelectElementalAndChampion = () => {
             cardType='elemental'
             style={styles.button}
           >
-            <TouchableOpacity 
+            <TouchableOpacity
+              onPress={initGameState}
               style={styles.button}
             >
                 <Text style={styles.buttonText}>
